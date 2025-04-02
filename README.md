@@ -1,6 +1,6 @@
 # 🚀 Data Sourcing and Visualization App
 
-A full-stack data pipeline application that enables users to source, process, and visualize automotive sales data from multiple sources (JSON, CSV, and API). Built with React, Flask, D3.js, and SQLite — designed for the Full-Stack Engineer role screening task at [Narravance](https://tinyurl.com/nvc-fs-jd).
+A full-stack data pipeline application that enables users to source, process, and visualize automotive sales data from multiple sources (JSON, CSV, and API). Built with React, Flask, D3.js, and SQLite — designed for the Full-Stack Engineer role screening task.
 
 ---
 
@@ -33,6 +33,7 @@ This web application allows users to:
 
 ## 🗂 Project Structure
 
+![Screenshot 2025-04-02 at 2 58 32 AM](https://github.com/user-attachments/assets/92f7c8cd-e276-48a3-8f8a-75355ba75b45)
 
 data-sourcing-visualization/
 ├── backend/
