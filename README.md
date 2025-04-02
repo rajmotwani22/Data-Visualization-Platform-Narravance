@@ -35,41 +35,6 @@ This web application allows users to:
 
 ![Screenshot 2025-04-02 at 2 58 32 AM](https://github.com/user-attachments/assets/92f7c8cd-e276-48a3-8f8a-75355ba75b45)
 
-data-sourcing-visualization/
-├── backend/
-│   ├── app.py                 # FastAPI entry point
-│   ├── models.py              # SQLAlchemy ORM models
-│   ├── queue_manager.py       # In-memory job queue logic
-│   ├── requirements.txt       # Backend dependencies
-│   ├── sales_data.db          # SQLite database file
-│   └── data_sources/          # Handlers for various data sources
-│       ├── api_source.py
-│       ├── csv_source.py
-│       └── json_source.py
-│
-├── data/                      # External source data samples
-│   ├── sample_data_a.json
-│   └── sample_data_b.csv
-│
-├── frontend/
-│   ├── package.json           # Frontend dependencies
-│   ├── node_modules/          # Installed node packages
-│   ├── public/
-│   │   └── index.html         # HTML template
-│   └── src/
-│       ├── App.js             # Main App component
-│       ├── index.js           # React DOM entry point
-│       ├── components/        # Feature modules
-│       │   ├── TaskCreator.jsx
-│       │   ├── TaskDetails.jsx
-│       │   ├── TaskList.jsx
-│       │   └── Visualizations.jsx
-│       └── styles/            # Component-specific styles
-│           ├── TaskCreator.css
-│           ├── TaskDetails.css
-│           ├── TaskList.css
-│           └── Visualizations.css
-
 
 ---
 
