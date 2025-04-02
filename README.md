@@ -89,7 +89,7 @@ Data-Sourcing-and-Visualization-main-2/
 
 ## 🧰 Getting Started
 
-### 1️⃣ Backend Setup
+### Backend Setup
 
 ```bash
 cd backend
@@ -99,7 +99,8 @@ pip install -r requirements.txt
 python app.py
 Runs on: http://localhost:8000
 
-### 2️⃣ Frontend Setup
+### Frontend Setup
+
 cd frontend
 npm install
 npm start
