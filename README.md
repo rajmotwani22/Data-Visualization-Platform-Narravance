@@ -89,9 +89,12 @@ Data-Sourcing-and-Visualization-main-2/
 
 ## 🧰 Getting Started
 
-### Backend Setup
+### Setup
 
 ```bash
+Backend
+
+
 cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\\Scripts\\activate
@@ -99,7 +102,7 @@ pip install -r requirements.txt
 python app.py
 Runs on: http://localhost:8000
 
-### Frontend Setup
+Frontend
 
 cd frontend
 npm install
