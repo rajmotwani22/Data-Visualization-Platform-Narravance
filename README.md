@@ -33,35 +33,41 @@ This web application allows users to:
 
 ## 🗂 Project Structure
 
-Data-Sourcing-and-Visualization-main-2/
-├── frontend/
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── abc.js
-│   ├── public/
-│   │   └── index.html
-│   ├── src/
-│   │   ├── App.js
-│   │   └── index.js
-│   └── node_modules/
-│       └── ...
-│
+
+data-sourcing-visualization/
 ├── backend/
-│   ├── app.py                # Main FastAPI or Flask app
-│   ├── models.py             # Data models
-│   ├── queue_manager.py      # Handles task queueing
-│   ├── sales_data.db         # SQLite database file
-│   ├── requirements.txt      # Python dependencies
-│   ├── data_sources/
-│   │   ├── csv_source.py
-│   │   ├── api_source.py
-│   │   └── json_source.py
-│   └── __pycache__/          # Compiled Python files
+│   ├── app.py                 # FastAPI entry point
+│   ├── models.py              # SQLAlchemy ORM models
+│   ├── queue_manager.py       # In-memory job queue logic
+│   ├── requirements.txt       # Backend dependencies
+│   ├── sales_data.db          # SQLite database file
+│   └── data_sources/          # Handlers for various data sources
+│       ├── api_source.py
+│       ├── csv_source.py
+│       └── json_source.py
 │
-├── data/
+├── data/                      # External source data samples
 │   ├── sample_data_a.json
 │   └── sample_data_b.csv
-
+│
+├── frontend/
+│   ├── package.json           # Frontend dependencies
+│   ├── node_modules/          # Installed node packages
+│   ├── public/
+│   │   └── index.html         # HTML template
+│   └── src/
+│       ├── App.js             # Main App component
+│       ├── index.js           # React DOM entry point
+│       ├── components/        # Feature modules
+│       │   ├── TaskCreator.jsx
+│       │   ├── TaskDetails.jsx
+│       │   ├── TaskList.jsx
+│       │   └── Visualizations.jsx
+│       └── styles/            # Component-specific styles
+│           ├── TaskCreator.css
+│           ├── TaskDetails.css
+│           ├── TaskList.css
+│           └── Visualizations.css
 
 
 ---
