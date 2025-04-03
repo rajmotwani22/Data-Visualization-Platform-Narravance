@@ -33,8 +33,10 @@ A full-stack data sourcing and visualization application where users can create 
 - Basic username/password auth
 - Sign In / Register screens with protected views
 - Session token stored on frontend
+<img width="436" alt="Screenshot 2025-04-03 at 2 35 52 AM" src="https://github.com/user-attachments/assets/e90f5bcc-3c60-45ba-9598-3107474a5b71" />
 
-📸 _Insert login screenshot here (e.g. `screenshots/login-page.png`)_
+<img width="413" alt="Screenshot 2025-04-03 at 2 35 32 AM" src="https://github.com/user-attachments/assets/d769ca2b-6a90-4969-b5df-a4880276948e" />
+
 
 ---
 
