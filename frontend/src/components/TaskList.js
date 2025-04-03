@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/TaskList.css';
+import { AuthContext } from '../App'; // Make sure this path matches where you define AuthContext
 
 const API_BASE_URL = 'http://localhost:8000/api';
 
@@ -9,6 +10,8 @@ const TaskList = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -18,6 +21,15 @@ const TaskList = () => {
         setLoading(false);
       } catch (err) {
         console.error('Error fetching tasks:', err);
+        
+        // Handle authentication errors
+        if (err.response && err.response.status === 401) {
+          // Token might be expired or invalid
+          logout();
+          navigate('/login');
+          return;
+        }
+        
         setError('Failed to fetch tasks. Please try again later.');
         setLoading(false);
       }
@@ -30,7 +42,7 @@ const TaskList = () => {
     
     // Clean up the interval when component unmounts
     return () => clearInterval(intervalId);
-  }, []);
+  }, [logout, navigate]);
 
   // Function to format dates
   const formatDate = (dateString) => {
