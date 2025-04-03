@@ -2,61 +2,307 @@
   {
     "company": "Toyota",
     "car_model": "Camry",
-    "sale_date": "2023-01-15T12:30:00",
-    "price": 28000
-  },
-  {
-    "company": "Honda",
-    "car_model": "Accord",
-    "sale_date": "2023-02-10T14:45:00",
-    "price": 27500
-  },
-  {
-    "company": "Ford",
-    "car_model": "Mustang",
-    "sale_date": "2023-03-05T09:15:00",
-    "price": 42000
+    "sale_date": "2023-01-05T14:21:49",
+    "price": 29400
   },
   {
     "company": "Toyota",
     "car_model": "Corolla",
-    "sale_date": "2023-04-20T16:20:00",
-    "price": 23000
-  },
-  {
-    "company": "Honda",
-    "car_model": "Civic",
-    "sale_date": "2023-05-12T11:10:00",
-    "price": 22500
+    "sale_date": "2023-01-05T22:00:17",
+    "price": 24800
   },
   {
     "company": "Toyota",
     "car_model": "RAV4",
-    "sale_date": "2024-01-15T12:30:00",
-    "price": 30000
+    "sale_date": "2023-01-06T13:36:34",
+    "price": 28300
   },
   {
     "company": "Honda",
-    "car_model": "CR-V",
-    "sale_date": "2024-02-10T14:45:00",
-    "price": 29500
+    "car_model": "Civic",
+    "sale_date": "2023-01-06T13:51:36",
+    "price": 22200
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Corolla",
+    "sale_date": "2023-01-06T21:52:09",
+    "price": 21300
+  },
+  {
+    "company": "Honda",
+    "car_model": "Civic",
+    "sale_date": "2023-01-07T01:15:10",
+    "price": 22400
   },
   {
     "company": "Ford",
     "car_model": "Explorer",
-    "sale_date": "2024-03-05T09:15:00",
-    "price": 38000
+    "sale_date": "2023-01-07T04:04:24",
+    "price": 40800
   },
   {
     "company": "Toyota",
     "car_model": "Highlander",
-    "sale_date": "2024-04-20T16:20:00",
-    "price": 35000
+    "sale_date": "2023-01-07T07:59:00",
+    "price": 35500
+  },
+  {
+    "company": "Ford",
+    "car_model": "Explorer",
+    "sale_date": "2023-01-09T14:58:51",
+    "price": 35900
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Camry",
+    "sale_date": "2023-01-10T00:47:38",
+    "price": 26600
+  },
+  {
+    "company": "Ford",
+    "car_model": "Mustang",
+    "sale_date": "2023-01-10T03:27:04",
+    "price": 40000
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Corolla",
+    "sale_date": "2023-01-10T13:21:14",
+    "price": 24400
+  },
+  {
+    "company": "Honda",
+    "car_model": "Civic",
+    "sale_date": "2023-01-10T18:52:54",
+    "price": 22100
+  },
+  {
+    "company": "Honda",
+    "car_model": "CR-V",
+    "sale_date": "2023-01-10T20:39:45",
+    "price": 29800
+  },
+  {
+    "company": "Toyota",
+    "car_model": "RAV4",
+    "sale_date": "2023-01-10T20:57:15",
+    "price": 31000
   },
   {
     "company": "Honda",
     "car_model": "Pilot",
-    "sale_date": "2024-05-12T11:10:00",
-    "price": 36500
+    "sale_date": "2023-01-10T21:44:16",
+    "price": 34400
+  },
+  {
+    "company": "Ford",
+    "car_model": "Mustang",
+    "sale_date": "2023-01-11T01:54:51",
+    "price": 44000
+  },
+  {
+    "company": "Honda",
+    "car_model": "CR-V",
+    "sale_date": "2023-01-11T11:00:31",
+    "price": 28400
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Camry",
+    "sale_date": "2023-01-11T20:13:51",
+    "price": 27800
+  },
+  {
+    "company": "Honda",
+    "car_model": "Pilot",
+    "sale_date": "2023-01-11T20:28:51",
+    "price": 36800
+  },
+  {
+    "company": "Ford",
+    "car_model": "Explorer",
+    "sale_date": "2023-01-11T21:01:56",
+    "price": 37400
+  },
+  {
+    "company": "Honda",
+    "car_model": "Civic",
+    "sale_date": "2023-01-12T14:24:59",
+    "price": 22300
+  },
+  {
+    "company": "Honda",
+    "car_model": "Civic",
+    "sale_date": "2023-01-12T18:22:59",
+    "price": 22300
+  },
+  {
+    "company": "Toyota",
+    "car_model": "RAV4",
+    "sale_date": "2023-01-13T10:50:51",
+    "price": 28500
+  },
+  {
+    "company": "Honda",
+    "car_model": "Pilot",
+    "sale_date": "2023-01-13T14:08:58",
+    "price": 35500
+  },
+  {
+    "company": "Ford",
+    "car_model": "Explorer",
+    "sale_date": "2023-01-14T04:05:26",
+    "price": 36800
+  },
+  {
+    "company": "Toyota",
+    "car_model": "RAV4",
+    "sale_date": "2023-01-14T07:26:40",
+    "price": 31400
+  },
+  {
+    "company": "Honda",
+    "car_model": "Pilot",
+    "sale_date": "2023-01-14T11:11:52",
+    "price": 34100
+  },
+  {
+    "company": "Ford",
+    "car_model": "Explorer",
+    "sale_date": "2023-01-14T15:31:16",
+    "price": 38700
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Corolla",
+    "sale_date": "2023-01-14T15:53:43",
+    "price": 24800
+  },
+  {
+    "company": "Honda",
+    "car_model": "Civic",
+    "sale_date": "2023-01-14T18:48:57",
+    "price": 23600
+  },
+  {
+    "company": "Ford",
+    "car_model": "Mustang",
+    "sale_date": "2023-01-14T21:47:37",
+    "price": 44900
+  },
+  {
+    "company": "Toyota",
+    "car_model": "RAV4",
+    "sale_date": "2023-01-15T06:21:15",
+    "price": 29400
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Highlander",
+    "sale_date": "2023-01-15T19:00:21",
+    "price": 37200
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Highlander",
+    "sale_date": "2023-01-15T23:33:51",
+    "price": 35300
+  },
+  {
+    "company": "Ford",
+    "car_model": "Mustang",
+    "sale_date": "2023-01-16T01:42:01",
+    "price": 42800
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Camry",
+    "sale_date": "2023-01-16T13:10:24",
+    "price": 27200
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Camry",
+    "sale_date": "2023-01-16T15:08:36",
+    "price": 26000
+  },
+  {
+    "company": "Honda",
+    "car_model": "Accord",
+    "sale_date": "2023-01-17T04:13:10",
+    "price": 26700
+  },
+  {
+    "company": "Toyota",
+    "car_model": "RAV4",
+    "sale_date": "2023-01-17T16:23:39",
+    "price": 28800
+  },
+  {
+    "company": "Honda",
+    "car_model": "Civic",
+    "sale_date": "2023-01-17T23:30:54",
+    "price": 20700
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Camry",
+    "sale_date": "2023-01-18T01:08:30",
+    "price": 26400
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Highlander",
+    "sale_date": "2023-01-18T02:31:25",
+    "price": 35700
+  },
+  {
+    "company": "Honda",
+    "car_model": "Accord",
+    "sale_date": "2023-01-18T04:37:32",
+    "price": 29000
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Camry",
+    "sale_date": "2023-01-18T18:06:52",
+    "price": 28900
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Corolla",
+    "sale_date": "2023-01-19T02:24:47",
+    "price": 23300
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Corolla",
+    "sale_date": "2023-01-19T04:15:34",
+    "price": 24000
+  },
+  {
+    "company": "Toyota",
+    "car_model": "Highlander",
+    "sale_date": "2023-01-19T05:46:53",
+    "price": 33700
+  },
+  {
+    "company": "Toyota",
+    "car_model": "RAV4",
+    "sale_date": "2023-01-19T06:40:02",
+    "price": 31700
+  },
+  {
+    "company": "Toyota",
+    "car_model": "RAV4",
+    "sale_date": "2023-01-19T07:50:29",
+    "price": 29700
+  },
+  {
+    "company": "Honda",
+    "car_model": "Accord",
+    "sale_date": "2023-01-20T10:30:49",
+    "price": 25500
   }
 ]
