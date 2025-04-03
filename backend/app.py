@@ -17,11 +17,15 @@ from passlib.context import CryptContext
 
 from models import Base, Task, SalesData, TaskStatus
 from queue_manager import QueueManager
+import logging
+import redis
+logger = logging.getLogger(__name__)
 
 # Authentication constants
 SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"  # Change this!
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
 
 # Initialize FastAPI app
 app = FastAPI(title="Data Visualization API", version="1.0.0")
@@ -34,6 +38,48 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# Redis configuration
+REDIS_ENABLED = os.environ.get('REDIS_ENABLED', 'true').lower() == 'true'
+REDIS_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
+CACHE_TTL = int(os.environ.get('CACHE_TTL', '300'))  # Default: 5 minutes
+# Initialize Redis manager
+
+class SimpleRedisManager:
+    def __init__(self, redis_url):
+        self.redis_url = redis_url
+        self.redis_client = None
+        self.is_connected = False
+    
+    def connect(self):
+        try:
+            self.redis_client = redis.from_url(self.redis_url)
+            self.redis_client.ping()
+            self.is_connected = True
+            return True
+        except Exception as e:
+            print(f"Redis connection error: {str(e)}")
+            self.is_connected = False
+            return False
+    
+    def health_check(self):
+        if not self.is_connected:
+            return {"connected": False, "error": "Not connected"}
+        
+        try:
+            info = self.redis_client.info()
+            return {
+                "connected": True,
+                "info": {
+                    "version": info.get("redis_version", "unknown"),
+                    "used_memory": info.get("used_memory_human", "unknown"),
+                    "uptime_days": info.get("uptime_in_days", "unknown"),
+                    "clients_connected": info.get("connected_clients", "unknown")
+                }
+            }
+        except Exception as e:
+            return {"connected": False, "error": str(e)}
+
+redis_manager = SimpleRedisManager(REDIS_URL)
 
 # Set up database
 DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///sales_data.db')
@@ -55,6 +101,7 @@ def get_db():
 class TaskRequest(BaseModel):
     source_a: Dict[str, Any] = {}
     source_b: Dict[str, Any] = {}
+    source_c: Dict[str, Any] = {}
 
 class TaskResponse(BaseModel):
     id: int
@@ -195,9 +242,29 @@ queue_manager = QueueManager(SessionLocal)
 
 @app.on_event("startup")
 async def startup_event():
-    # Start the queue manager
-    queue_manager.start()
+      # Connect to Redis
+    if REDIS_ENABLED:
+        try:
+            redis_connected = redis_manager.connect()
+            if redis_connected:
+                app.state.redis_manager = redis_manager
+                logger.info("Redis manager stored in app state")
+            else:
+                logger.warning(f"Warning: Redis connection failed. Caching will be disabled.")
+        except Exception as e:
+            logger.error(f"Error initializing Redis: {str(e)}")
+            logger.warning("Redis features will be disabled")
+    else:
+        logger.info("Redis is disabled by configuration. Caching will be disabled.")
     
+
+
+
+    # Start the queue manager
+
+    
+    queue_manager.start()
+
     # Create sample data directory if it doesn't exist
     data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
     os.makedirs(data_dir, exist_ok=True)
@@ -387,7 +454,7 @@ async def create_task(
     _: dict = Depends(get_current_user)
 ):
     """Create a new task"""
-    parameters = {"source_a": task_data.source_a, "source_b": task_data.source_b}
+    parameters = {"source_a": task_data.source_a, "source_b": task_data.source_b, "source_c": task_data.source_c }
     task = Task(parameters=parameters)
     db.add(task)
     db.commit()
@@ -533,13 +600,69 @@ async def get_models(db: Session = Depends(get_db), _: dict = Depends(get_curren
     models = db.query(SalesData.car_model).distinct().all()
     return [model[0] for model in models if model[0]]
 
-
+@app.post("/api/register")
+async def register_user(user_data: UserCreate):
+    if user_data.username in fake_users_db:
+        raise HTTPException(
+            status_code=400,
+            detail="Username already registered"
+        )
+    
+    # Hash the password
+    hashed_password = pwd_context.hash(user_data.password)
+    
+    # Store new user (in a real app, you would store in a database)
+    fake_users_db[user_data.username] = {
+        "id": len(fake_users_db) + 1,
+        "username": user_data.username,
+        "email": user_data.email,
+        "hashed_password": hashed_password
+    }
+    
+    return {"message": "User registered successfully"}
 # Add this temporarily to your app.py to print a fresh hash
 print("Generating a fresh password hash for 'password':")
 fresh_hash = pwd_context.hash("password")
 print(f"Fresh hash: {fresh_hash}")
 print(f"Verification result: {pwd_context.verify('password', fresh_hash)}")
 print(f"Verification with stored hash: {pwd_context.verify('password', '$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW')}")
+
+
+
+@app.get("/api/redis/status")
+async def redis_status(_: dict = Depends(get_current_user)):
+    """Check Redis connection status and queue stats"""
+    if not REDIS_ENABLED:
+        return {
+            "connected": False,
+            "info": {"status": "disabled"},
+            "queue_stats": {"status": "disabled"}
+        }
+    
+    # Ensure we have the Redis manager in app state
+    if not hasattr(app.state, 'redis_manager'):
+        return {
+            "connected": False,
+            "info": {"error": "Redis manager not initialized"},
+            "queue_stats": {"status": "not initialized"}
+        }
+    
+    try:
+        health_info = app.state.redis_manager.health_check()
+        queue_stats = queue_manager.get_queue_stats() if queue_manager else {"status": "not initialized"}
+        
+        return {
+            "connected": health_info["connected"],
+            "info": health_info["info"] if health_info["connected"] else {"error": health_info["error"]},
+            "queue_stats": queue_stats
+        }
+    except Exception as e:
+        logger.error(f"Error getting Redis status: {str(e)}")
+        return {
+            "connected": False,
+            "info": {"error": str(e)},
+            "queue_stats": {"status": "error"}
+        }
 
 if __name__ == '__main__':
     import uvicorn
