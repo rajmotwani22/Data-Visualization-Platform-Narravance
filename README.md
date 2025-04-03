@@ -1,85 +1,172 @@
-# 🚀 Data Sourcing and Visualization App
 
-A full-stack data pipeline application that enables users to source, process, and visualize automotive sales data from multiple sources (JSON, CSV, and API). Built with React, Flask, D3.js, and SQLite — designed for the Full-Stack Engineer role screening task.
+# 📊 Data Sourcing & Visualization Platform
 
----
-
-## 🧩 Overview
-
-This web application allows users to:
-- 📝 **Create data tasks** with filters (date range, companies, models)
-- 📦 **Pull data** from multiple sources and queue jobs
-- 📊 **Visualize results** with dynamic, filterable D3.js charts
-- 📁 **Review a unified dataset** from JSON, CSV, and API inputs
+A full-stack data sourcing and visualization application where users can create tasks to fetch car sales data from multiple sources (JSON, CSV, API), store the unified data, and view interactive analytics dashboards.
 
 ---
 
-## ⚙️ Tech Stack
+## 🌟 Features
 
-**Frontend**
-- React
-- React Router DOM
-- Axios
-- D3.js
-- CSS Modules
-
-**Backend**
-- Python + Flask
-- SQLAlchemy ORM
-- SQLite Database
-- In-Memory Job Queue (Python's `queue` module)
-
----
-
-## 🗂 Project Structure
-
-![Screenshot 2025-04-02 at 2 58 32 AM](https://github.com/user-attachments/assets/92f7c8cd-e276-48a3-8f8a-75355ba75b45)
-
+- ✅ Create data fetch tasks from:
+  - JSON (local or remote)
+  - CSV (uploaded or stored)
+  - API (live source)
+- 🕒 Task status lifecycle: `Pending → In Progress → Completed`
+- 📊 Interactive visualizations (Line, Bar, Pie, Heatmap)
+- 🧠 Filter analytics by Year, Month, Company, Model, and Source
+- 🔁 Polling for real-time task status
+- 🔐 User Authentication (Sign In / Register)
+- ⚡ Redis-backed queue manager for async task processing
+- 🧪 Sample data provided for testing
 
 ---
 
-## 🧪 How It Works
+## 🧱 Architecture Flow
 
-1. **User submits a task** from the frontend with custom filters
-2. **Task enters a queue** (`pending` → `in_progress` → `completed`)
-3. **Data is pulled** from selected sources and stored in the database
-4. **Visualizations are rendered** (charts + tables) based on results
+```text
+User
+  │
+  ▼
+React Frontend
+  │
+  ▼
+FastAPI Backend ─────────┐
+  │                     │
+  ▼                     ▼
+Queue Manager        SQLite DB
+  │
+  ├─▶ JSON Source (Local)
+  ├─▶ CSV Source (Local)
+  └─▶ API Source (Live)
+```
+
+📸 _Insert screenshot of architecture flow diagram here_
 
 ---
 
-## 🧠 Features
+## 🔑 Authentication
 
-- ✅ Task-based data sourcing
-- ✅ Multi-source merging (JSON, CSV, API)
-- ✅ Simulated job processing queue
-- ✅ SQLite-backed persistence
-- ✅ D3-powered charts (bar, line)
-- ✅ Filtering by year, month, company, model, and source
-- ✅ Modular React components & clean CSS
+- Basic username/password auth
+- Sign In / Register screens with protected views
+- Session token stored on frontend
+
+📸 _Insert login screenshot here (e.g. `screenshots/login-page.png`)_
 
 ---
 
-## 🧰 Getting Started
+## 🖼️ Screenshots
 
-### Setup
+### Task List View
+📸 _Insert screenshot here (e.g. `screenshots/task-dashboard.png`)_
 
+---
+
+## 🗂 File Structure
+
+```
+.
+├── backend/
+│   ├── app.py
+│   ├── models.py
+│   ├── queue_manager.py
+│   ├── sales_data.db
+│   ├── requirements.txt
+│   └── data_sources/
+│       ├── json_source.py
+│       ├── csv_source.py
+│       └── api_source.py
+│
+├── frontend/
+│   ├── package.json
+│   ├── public/
+│   │   └── index.html
+│   └── src/
+│       ├── App.js
+│       ├── index.js
+│       ├── components/
+│       │   ├── TaskCreator.jsx
+│       │   ├── TaskList.jsx
+│       │   ├── TaskDetails.jsx
+│       │   └── Visualizations.jsx
+│       └── styles/
+│           ├── *.css
+│
+├── data/
+│   ├── sample_data_a.json
+│   └── sample_data_b.csv
+```
+
+---
+
+## 💾 Sample Data
+
+### JSON
+
+```json
+{
+  "company": "Toyota",
+  "car_model": "Camry",
+  "sale_date": "2023-01-15T12:30:00",
+  "price": 28000
+}
+```
+
+### CSV
+
+```csv
+id,company,car_model,sale_date,price
+1,Honda,Civic,2023-04-10,26000
+```
+
+---
+
+## 📊 Visualizations
+
+- 📈 Line Chart – Sales volume over time
+- 📊 Bar Chart – Company-wise car sales
+- 🥧 Pie Chart – Source distribution
+- 🔥 Heatmap – Monthly trends
+
+---
+
+## ⚙️ Setup Instructions
+
+### Backend
 ```bash
-Backend
-
-
 cd backend
 python -m venv venv
-source venv/bin/activate  # Windows: venv\\Scripts\\activate
+source venv/bin/activate
 pip install -r requirements.txt
-python app.py
-Runs on: http://localhost:8000
+uvicorn app:app --reload
+```
 
-Frontend
-
+### Frontend
+```bash
 cd frontend
 npm install
 npm start
-Runs on: http://localhost:3000
+```
 
+### Queue (with Redis)
+```bash
+redis-server  # or run Redis on Docker
+rq worker     # in backend/ directory
+```
 
+---
+
+## 🧠 Future Improvements
+
+- ⬇ Export visualized data to CSV
+- ☁️ Deploy to Vercel/Render with CI/CD
+- 👥 Add user roles & task history per user
+- 🌍 Enable upload of custom CSV/JSON sources
+
+---
+
+## 📬 Contact
+
+If you'd like to discuss this project or have questions, feel free to reach out via GitHub Issues or [your.email@example.com].
+
+---
 
