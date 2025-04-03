@@ -24,20 +24,54 @@ A full-stack data sourcing and visualization application where users can create 
 ## 🧱 Architecture Flow
 
 ```text
-User
-  │
-  ▼
-React Frontend
-  │
-  ▼
-FastAPI Backend ─────────┐
-  │                     │
-  ▼                     ▼
-Queue Manager        SQLite DB
-  │
-  ├─▶ JSON Source (Local)
-  ├─▶ CSV Source (Local)
-  └─▶ API Source (Live)
+📦 Data-Sourcing-and-Visualization
+├── 📁 backend
+│   ├── 📄 app.py
+│   ├── 📄 models.py
+│   ├── 📄 queue_manager.py
+│   ├── 📄 auth_simple.py
+│   ├── 📄 requirements.txt
+│   ├── 📄 sales_data.db
+│   ├── 📁 data_sources
+│   │   ├── 📄 api_source.py
+│   │   ├── 📄 csv_source.py
+│   │   └── 📄 json_source.py
+│   ├── 📁 Redis
+│   │   ├── 📄 redis_cache_decorator.py
+│   │   ├── 📄 redis_connection.py
+│   │   └── 📄 redis_diagnose.py
+│   └── 📁 tests
+│       ├── 📄 __init__.py
+│       ├── 📄 test_auth.py
+│       └── 📄 conftest.py
+│
+├── 📁 data
+│   ├── 📄 sample_data_a.json
+│   └── 📄 sample_data_b.csv
+│
+├── 📁 frontend
+│   ├── 📄 package.json
+│   ├── 📁 node_modules
+│   ├── 📁 public
+│   │   └── 📄 index.html
+│   └── 📁 src
+│       ├── 📄 App.js
+│       ├── 📄 index.js
+│       ├── 📁 components
+│       │   ├── 📄 TaskCreator.js
+│       │   ├── 📄 TaskDetails.js
+│       │   ├── 📄 TaskList.js
+│       │   ├── 📄 Visualizations.js
+│       │   ├── 📁 auth
+│       │   │   ├── 📄 Login.js
+│       │   │   └── 📄 Register.js
+│       └── 📁 styles
+│           ├── 📄 TaskCreator.css
+│           ├── 📄 TaskDetails.css
+│           ├── 📄 TaskList.css
+│           └── 📄 Visualizations.css
+│
+├── 📄 Redis-setup.sh
 ```
 
 📸 _Insert screenshot of architecture flow diagram here_
