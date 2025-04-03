@@ -43,7 +43,8 @@ A full-stack data sourcing and visualization application where users can create 
 ## 🖼️ Screenshots
 
 ### Task List View
-📸 _Insert screenshot here (e.g. `screenshots/task-dashboard.png`)_
+<img width="1081" alt="Screenshot 2025-04-03 at 3 31 06 AM" src="https://github.com/user-attachments/assets/d95fad0b-98da-4c2e-8228-ad32250e1619" />
+
 
 ---
 
