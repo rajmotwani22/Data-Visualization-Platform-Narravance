@@ -23,11 +23,8 @@ A full-stack data sourcing and visualization application where users can create 
 
 ## 🧱 Architecture Flow
 
-```text
+![Screenshot 2025-04-03 at 3 28 54 AM](https://github.com/user-attachments/assets/11ea881c-e289-4773-8034-cb0ef3519822)
 
-```
-
-📸 _Insert screenshot of architecture flow diagram here_
 
 ---
 
