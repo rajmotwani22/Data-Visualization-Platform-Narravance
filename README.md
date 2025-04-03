@@ -171,7 +171,7 @@ rq worker     # in backend/ directory
 
 ## 📬 Contact
 
-If you'd like to discuss this project or have questions, feel free to reach out via GitHub Issues or [your.email@example.com].
+If you'd like to discuss this project or have questions, feel free to reach out via GitHub Issues or [rajmotwani950@gmail.com].
 
 ---
 
