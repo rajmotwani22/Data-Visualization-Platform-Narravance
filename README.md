@@ -24,6 +24,33 @@ A full-stack data sourcing and visualization application where users can create 
 ## 🧱 Architecture Flow
 
 ```text
+
+```
+
+📸 _Insert screenshot of architecture flow diagram here_
+
+---
+
+## 🔑 Authentication
+
+- Basic username/password auth
+- Sign In / Register screens with protected views
+- Session token stored on frontend
+
+📸 _Insert login screenshot here (e.g. `screenshots/login-page.png`)_
+
+---
+
+## 🖼️ Screenshots
+
+### Task List View
+📸 _Insert screenshot here (e.g. `screenshots/task-dashboard.png`)_
+
+---
+
+## 🗂 File Structure
+
+```
 📦 Data-Sourcing-and-Visualization
 ├── 📁 backend
 │   ├── 📄 app.py
@@ -72,62 +99,6 @@ A full-stack data sourcing and visualization application where users can create 
 │           └── 📄 Visualizations.css
 │
 ├── 📄 Redis-setup.sh
-```
-
-📸 _Insert screenshot of architecture flow diagram here_
-
----
-
-## 🔑 Authentication
-
-- Basic username/password auth
-- Sign In / Register screens with protected views
-- Session token stored on frontend
-
-📸 _Insert login screenshot here (e.g. `screenshots/login-page.png`)_
-
----
-
-## 🖼️ Screenshots
-
-### Task List View
-📸 _Insert screenshot here (e.g. `screenshots/task-dashboard.png`)_
-
----
-
-## 🗂 File Structure
-
-```
-.
-├── backend/
-│   ├── app.py
-│   ├── models.py
-│   ├── queue_manager.py
-│   ├── sales_data.db
-│   ├── requirements.txt
-│   └── data_sources/
-│       ├── json_source.py
-│       ├── csv_source.py
-│       └── api_source.py
-│
-├── frontend/
-│   ├── package.json
-│   ├── public/
-│   │   └── index.html
-│   └── src/
-│       ├── App.js
-│       ├── index.js
-│       ├── components/
-│       │   ├── TaskCreator.jsx
-│       │   ├── TaskList.jsx
-│       │   ├── TaskDetails.jsx
-│       │   └── Visualizations.jsx
-│       └── styles/
-│           ├── *.css
-│
-├── data/
-│   ├── sample_data_a.json
-│   └── sample_data_b.csv
 ```
 
 ---
